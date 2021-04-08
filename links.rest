@@ -10,5 +10,6 @@ POST http://localhost:3000/api
 Content-Type: application/json
 
 {
-    "test": "Hej du"
+    "id": 4,
+    "title": "Parkera"
 }

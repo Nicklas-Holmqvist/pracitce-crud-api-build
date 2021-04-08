@@ -40,7 +40,20 @@ app.get("/api/:id", (req, res) => {
 })
 
 app.post("/api", (req, res) => {
-    res.json(todos)
+    const title = req.body.title
+    
+    let id = 0
+    todos.forEach((todo) => {
+        if(todo.id > id) {
+            id = todo.id
+        }
+    }) 
+
+    id++
+
+    console.log(id)
+
+    res.json(title)
 })
 
 
