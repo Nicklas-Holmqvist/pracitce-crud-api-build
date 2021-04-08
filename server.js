@@ -25,12 +25,22 @@ app.get("/api", (req, res) => {
 
 app.get("/api/:id", (req, res) => {
     const id = req.params.id
-    res.json("GET: " + id)
+
+    const foundTodo = todos.find((todo) => {
+        return todo.id == id
+    })
+
+    if(!foundTodo) {
+        res.json("error")
+    }
+
+    console.log(foundTodo)
+
+    res.json(foundTodo)
 })
 
 app.post("/api", (req, res) => {
-    const body = req.body.test
-    res.json(body)
+    res.json(todos)
 })
 
 
