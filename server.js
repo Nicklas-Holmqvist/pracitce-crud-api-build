@@ -2,6 +2,7 @@ const express = require('express');
 const app = express()
 const port = 3000
 
+// The todo-array
 const todos = [
     {
         "id": 1,
@@ -20,10 +21,12 @@ const todos = [
 app.use(express.static('./public'))
 app.use(express.json())
 
+// Show all todos
 app.get("/api", (req, res) => {
     res.json(todos)
 })
 
+// Create and show one specific todo
 app.get("/api/:id", (req, res) => {
     const id = req.params.id
 
@@ -40,6 +43,7 @@ app.get("/api/:id", (req, res) => {
     res.json(foundTodo)
 })
 
+// Create a new todo
 app.post("/api", (req, res) => {
 
     if(!req.body.title) { res.json("error")}
@@ -65,8 +69,7 @@ app.post("/api", (req, res) => {
     })
 })
 
-
-
+// Start the server
 app.listen(port, (req, res) => {
     console.log('servern är igång på: ' + port)
 })

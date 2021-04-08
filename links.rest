@@ -1,11 +1,14 @@
+// All todos
 GET http://localhost:3000/api
 
 ###
 
-GET http://localhost:3000/api/
+// Todo ID, one todo
+GET http://localhost:3000/api/5
 
 ###
 
+// Add todo
 POST http://localhost:3000/api
 Content-Type: application/json
 

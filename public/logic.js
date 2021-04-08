@@ -1,5 +1,6 @@
 window.addEventListener("load", initSite)
 
+// Function to run all api requests
 async function initSite() {
     console.log("init")
     const todos = await getAllTodos()
@@ -11,16 +12,19 @@ async function initSite() {
     console.log(newTodo)
 }
 
+// Function to get all todos from api function makeRequest
 async function getAllTodos() {
    const todos = await makeRequest("/api", "GET")
    return todos
 }
 
+// Function to get one todo from api function makeRequest
 async function getSpecific(id) {
     const todo = await makeRequest("/api/"+id, "GET")
     return todo
 }
 
+// Function to add one todo to api function makeRequest
 async function saveNewTodo(title) {
 
     const body = {title: "hej"}
@@ -29,6 +33,7 @@ async function saveNewTodo(title) {
     return status
 }
 
+// Function to get the api data
 async function makeRequest(url, method, body) {
 
     const response = await fetch(url, {
