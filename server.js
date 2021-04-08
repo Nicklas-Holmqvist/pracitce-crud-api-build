@@ -17,6 +17,7 @@ const todos = [
     }
 ]
 
+app.use(express.static('./public'))
 app.use(express.json())
 
 app.get("/api", (req, res) => {
