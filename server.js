@@ -42,7 +42,7 @@ app.get("/api/:id", (req, res) => {
 
 app.post("/api", (req, res) => {
 
-    if(!req.body.title) { res.json("error") }
+    if(!req.body.title) { res.json("error")}
 
     const titleToSave = req.body.title
     
