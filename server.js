@@ -20,7 +20,7 @@ const todos = [
 app.use(express.json())
 
 app.get("/api", (req, res) => {
-    res.json('Hej, välkommen!')
+    res.json(todos)
 })
 
 app.get("/api/:id", (req, res) => {
@@ -40,20 +40,28 @@ app.get("/api/:id", (req, res) => {
 })
 
 app.post("/api", (req, res) => {
-    const title = req.body.title
+
+    if(!req.body.title) { res.json("error") }
+
+    const titleToSave = req.body.title
     
-    let id = 0
+    let idToSave = 0
     todos.forEach((todo) => {
-        if(todo.id > id) {
-            id = todo.id
+        if(todo.id > idToSave) {
+            idToSave = todo.id
         }
     }) 
 
-    id++
+    idToSave++
 
-    console.log(id)
+    todos.push({
+        id: idToSave,
+        title:titleToSave
+    })
 
-    res.json(title)
+    res.json({
+        status: "Ny todo sparad!"
+    })
 })
 
 
